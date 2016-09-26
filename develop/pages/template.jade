@@ -1,0 +1,19 @@
+doctype
+html(lang=app.lang)
+  head
+    meta(charset="utf-8")
+    title= app.title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content=app.seo.description)
+    meta(name="keywords" content=app.seo.keywords)
+    meta(name="author" content=app.seo.author)
+    meta(name="robots" content=app.seo.robots)
+    // head codes goes here
+    block head
+  body
+    script(type="text/javascript" src="./bundles/loader.bundle.js")
+    // contents goes here
+    .bonny-main: block body
+    script(type="text/javascript" src="./bundles/template.bundle.js")
+    // footer goes here
+    block footer
