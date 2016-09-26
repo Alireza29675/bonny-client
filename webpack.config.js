@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
+    watch: true,
     entry: {
       loader: "./develop/bundles/loader/index.js",
       template: "./develop/bundles/template/index.js",
