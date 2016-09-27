@@ -8,6 +8,7 @@ var config = require('./bonny.config').parse();
 
 var _appDataURL = './bonny.config.js';
 var templateFile = config.views.fullDevelopPath + '/_template.jade';
+var localizationFiles = config.localization.fullDevelopPath + '/*.js';
 
 var handleError = function (err) {
   console.error( err.toString() );
@@ -31,7 +32,7 @@ gulp.task('templates', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.templates.concat([_appDataURL, templateFile]), ['templates']);
+  gulp.watch(paths.templates.concat([_appDataURL, templateFile, localizationFiles]), ['templates']);
 });
 
 gulp.task('default', ['watch', 'templates']);
