@@ -11,6 +11,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.css$/, loader: "style!css" },
+            { test: /\.maycss$/, loader: "css" },
             { test: /\.styl$/, loader: "style!css!stylus" },
             { test: /\.sass$/, loader: "style!css!sass" },
             { test: /\.less$/, loader: "style!css!less" },

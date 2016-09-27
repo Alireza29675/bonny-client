@@ -1,38 +1,108 @@
 var fs = require('fs');
 var path = require('path');
 
-// ===============================================================
-// -------------------- Basis Setting ----------------------------
-// ===============================================================
+// ==================================================================
+// ==================================================================
+// ===-----=====-----===== Basis Setting =====-----=====-----=====---
+// ==================================================================
+// ==================================================================
 
 var app = {
+
   defaultLang: "en",
-  lang: "fa",
-}
-var data = {
-  seo: {
-    keywords: "bonny, Boilerplate, jade, stylus, webpack, gulp, es6",
-    robots: "index, follow"
-  }
-}
-var setting = {
-  develop: {
-    src: "./develop",
-    views: { src: "/views" },
-    bundles: { src: "/views/bundles" },
-    localization: { src: "/views/localization" }
-  },
-  build: {
-    src: "./app",
-    views: { src: "/" },
-    bundles: { src: "/bundles" },
-  }
+
+  lang: "fa"
+
 }
 
-// ---------------------------------------------------------------
+var data = {
+
+  seo: {
+
+    discription: "", // no neccessary to enter it because it's on eng.js
+
+    keywords: "bonny, Boilerplate, jade, stylus, webpack, gulp, es6",
+
+    robots: "index, follow",
+
+    author: "",  // no neccessary to enter it because it's on eng.js
+
+  }
+
+}
+
+var setting = {
+
+  develop: {
+
+    src: "./develop",
+
+    views: { src: "/views" },
+
+    bundles: { src: "/views/bundles" },
+
+    localization: { src: "/views/localization" }
+
+  },
+
+  build: {
+
+    src: "./app",
+
+    views: { src: "/" },
+
+    bundles: { src: "/bundles" },
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // -------------------------- Parser -----------------------------
-// ---------------------------------------------------------------
+
+var someRTL = ['fa', 'persian', 'ar', 'arabic'];
+
 app.lang = app.lang ? app.lang : app.defaultLang;
+app.direction = app.direction ? app.direction : ( someRTL.indexOf( app.lang ) != -1 ? 'rtl': 'ltr' );
 
 var getDirectories = function(srcpath) {
   return fs.readdirSync(srcpath).filter(function(file) {
@@ -62,10 +132,10 @@ try {
     fs.accessSync(localization_file, fs.F_OK);
     _data = eval( String( fs.readFileSync( localization_file ) ) );
 } catch (e) {
-  console.warn("We don't have any " + app.lang + ".js file in " + localization_folder)
+  console.warn("We cant't find or open " + app.lang + ".js file in " + localization_folder)
 }
 
-data = mergeObjects(_defaultData, data, _data);
+data = mergeObjects(data, _defaultData, _data);
 
 var parse = function() {
   var parsingConfig = {

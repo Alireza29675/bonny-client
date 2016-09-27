@@ -47,13 +47,9 @@
 
 	'use strict';
 
-	__webpack_require__(23);
+	__webpack_require__(22);
 
-	__webpack_require__(25);
-
-	console.log("Blub blub");
-
-	console.warn("Opps");
+	__webpack_require__(24);
 
 /***/ },
 
@@ -367,13 +363,13 @@
 
 /***/ },
 
-/***/ 23:
+/***/ 22:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(24);
+	var content = __webpack_require__(23);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(4)(content, {});
@@ -394,7 +390,7 @@
 
 /***/ },
 
-/***/ 24:
+/***/ 23:
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -402,14 +398,14 @@
 
 
 	// module
-	exports.push([module.id, "::selection {\n  background-color: rgba(48,48,48,0.2);\n}\n* {\n  font-family: IRANSans !important;\n}\nbody {\n  font-family: IRANSans;\n  direction: rtl;\n}\nbody h1 {\n  font-weight: bold;\n  margin-bottom: 20px;\n}\nbody h3 {\n  margin-bottom: 30px;\n}\nbody h4 {\n  margin-bottom: 20px;\n}\n[lang=en] {\n  direction: ltr;\n}\n", ""]);
+	exports.push([module.id, "::selection {\n  background-color: rgba(48,48,48,0.2);\n}\n* {\n  font-family: IRANSans !important;\n}\nbody {\n  font-family: IRANSans;\n}\nbody h1 {\n  font-weight: bold;\n  margin-bottom: 20px;\n}\nbody h3 {\n  margin-bottom: 30px;\n}\nbody h4 {\n  margin-bottom: 20px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 
-/***/ 25:
+/***/ 24:
 /***/ function(module, exports) {
 
 	"use strict";

@@ -2,8 +2,11 @@
 import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/js/bootstrap.min'
 
-// importing Bootstrap RTL for Persian Websites
-import './bootstrap/css/bootstrap-rtl.min.css'
+// importing Bootstrap RTL for RTL Websites
+import rtl from './bootstrap/css/bootstrap-rtl.min.maycss'
+if(document.getElementsByTagName('html')[0].getAttribute('data-direction') == "rtl") {
+  document.getElementsByTagName('head')[0].innerHTML += "<style type='text/css'>" + rtl.toString() + "</style>";
+}
 
 // importing Bootstrap Theme
 import './bootstrap/css/bootstrap-theme.min.css'

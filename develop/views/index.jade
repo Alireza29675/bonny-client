@@ -3,7 +3,7 @@ extends _template
 block vars
   -
     var page = {
-      title: "صفحه اصلی"
+      title: data.dictionary.home.title
     }
 
 block footer
@@ -13,20 +13,20 @@ block body
   
   .jumbotron.text-center
     h1= data.title
-    p به این قالب خالی قدرت گرفته از هسته هیجان انگیز بانی خوش اومدید!
+    p= data.dictionary.home.welcome
     
   .container
-    h3.text-center بانی خوبه به خاطر:
+    h3.text-center= data.dictionary.home.bunnyFeaturesTitle
     .row
       .col-sm-4
-        h4 راه اندازی سریع
-        p بانی به سرعت برق راه اندازی میشه...
-        p ویرایش اطلاعات و دلبخواه سازی قالب هاش هم فوق العاده راحته! کافیه یه نگاه به فولدربندی ها بندازی و بدون راهنما یادش بگیری!
+        h4= data.dictionary.home.column1.header
+        p= data.dictionary.home.column1.p1
+        p= data.dictionary.home.column1.p2
       .col-sm-4
-        h4 انعطاف پذیری
-        p به راحتی با پیش پردازنده دلبخواهتون شروع به کار کنید. ما هم یکسری پیش پردازنده پیش فرض رو براتون در نظر گرفتیم!
-        p با بوتسترپ و قالب هاش با انعطاف و سرعت طراحی دلبخواهتون رو بسازید.
+        h4= data.dictionary.home.column2.header
+        p= data.dictionary.home.column2.p1
+        p= data.dictionary.home.column2.p2
       .col-sm-4
-        h4 ترکیب بهترینها
-        p در بانی Bootstrap, Jade, Stylus, ES6, Coffee و … به کمک webpack در کنار هم باندل میشن و بهترین رو تولید میکنن
-        p یه npm start تا همه ی اینها فاصله داری!
+        h4= data.dictionary.home.column3.header
+        p= data.dictionary.home.column3.p1
+        p= data.dictionary.home.column3.p2
