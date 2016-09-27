@@ -9,11 +9,20 @@ var path = require('path');
 var setting = {
   develop: {
     src: "./develop",
+    bundles: {
+      src: "/views/bundles"
+    },
+    views: {
+      src: "/views"
+    }
   },
   build: {
-    src: "./build",
+    src: "./app",
     bundles: {
       src: "/bundles",
+    },
+    views: {
+      src: "/"
     }
   }
 }
@@ -55,16 +64,24 @@ var parse = function() {
       src: config.setting.build.src,
     },
     bundles: {
-      src: config.setting.build.bundles.src,
+      developSrc: config.setting.develop.bundles.src,
+      fullDevelopPath: config.setting.develop.src + config.setting.develop.bundles.src,
+      buildSrc: config.setting.build.bundles.src,
       fullBuildPath: config.setting.build.src + config.setting.build.bundles.src,
       items: [],
       webpackEntryObject: {}
+    },
+    views: {
+      developSrc: config.setting.develop.views.src,
+      fullDevelopPath: config.setting.develop.src + config.setting.develop.views.src,
+      buildSrc: config.setting.build.views.src,
+      fullBuildPath: config.setting.build.src + config.setting.build.views.src,
     }
   };
-  var bundleNames = getDirectories(parsingConfig.develop.src + "/bundles");
+  var bundleNames = getDirectories( parsingConfig.bundles.fullDevelopPath );
   var bundleUrl;
   for (bundleName of bundleNames) {
-    bundleUrl = parsingConfig.develop.src + "/bundles/" + bundleName + "/index.js";
+    bundleUrl = parsingConfig.bundles.fullDevelopPath + "/" + bundleName + "/index.js";
     parsingConfig.bundles.items.push({
       name: bundleName,
       url: bundleUrl

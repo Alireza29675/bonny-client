@@ -7,7 +7,7 @@ var fs = require('fs');
 var config = require('./bonny.config').parse();
 
 var _appDataURL = './bonny.config.js';
-var templateFile = config.develop.src + '/pages/template.jade';
+var templateFile = config.views.fullDevelopPath + '/_template.jade';
 
 var handleError = function (err) {
   console.error( err.toString() );
@@ -15,7 +15,7 @@ var handleError = function (err) {
 
 var paths = {
   templates: [
-    config.develop.src + '/pages/*.jade', '!' + templateFile
+    config.views.fullDevelopPath + '/*.jade', '!' + templateFile
   ],
 };
 
@@ -27,7 +27,7 @@ gulp.task('templates', function() {
     .pipe(jade())
     .on('error', handleError)
     .pipe(prettify({indent_char: ' ', indent_size: 2}))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest(config.views.fullBuildPath.slice(2, -1)));
 });
 
 gulp.task('watch', function() {
