@@ -1,5 +1,11 @@
 extends template
 
+block vars
+  -
+    var page = {
+      title: "صفحه اصلی"
+    }
+
 block footer
   script(type="text/javascript" src="./bundles/index.bundle.js")
 
