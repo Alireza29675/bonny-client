@@ -1,60 +1,66 @@
 var fs = require('fs');
 var path = require('path');
 
-
 // ===============================================================
-// -------------------- Configuration ----------------------------
+// -------------------- Basis Setting ----------------------------
 // ===============================================================
 
 var setting = {
   develop: {
     src: "./develop",
-    bundles: {
-      src: "/views/bundles"
-    },
-    views: {
-      src: "/views"
-    }
+    views: { src: "/views" },
+    bundles: { src: "/views/bundles" },
+    localization: { src: "/views/localization" }
   },
   build: {
     src: "./app",
-    bundles: {
-      src: "/bundles",
-    },
-    views: {
-      src: "/"
-    }
+    views: { src: "/" },
+    bundles: { src: "/bundles" },
   }
 }
 
+// ===============================================================
+// ------------------- Application Setting -----------------------
+// ===============================================================
+
 var app = {
-  title: "سلام بانی",
-  lang: "fa",
+  lang: "en",
+}
+var data = {
   seo: {
-    description: "This is a sample bonny website",
     keywords: "bonny, Boilerplate, jade, stylus, webpack, gulp, es6",
-    author: "Alireza Sheikholmolouki",
     robots: "index, follow"
   }
 }
 
-var data = {
 
-}
-
-// ===============================================================
-// ===============================================================
-
-
-
-
-// ------------------------- Parser ------------------------------------
-
+// ---------------------------------------------------------------
+// -------------------------- Parser -----------------------------
+// ---------------------------------------------------------------
 var getDirectories = function(srcpath) {
   return fs.readdirSync(srcpath).filter(function(file) {
     return fs.statSync(path.join(srcpath, file)).isDirectory();
   });
 }
+var mergeObjects = function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  } return target;
+}
+
+var _data = {};
+var localization_file = setting.develop.src + setting.develop.localization.src + "/" + app.lang + ".js";
+try {
+    fs.accessSync(localization_file, fs.F_OK);
+    _data = eval( String( fs.readFileSync( localization_file ) ) );
+} catch (e) {}
+data = mergeObjects(data, _data);
+
 var parse = function() {
   var parsingConfig = {
     develop: {

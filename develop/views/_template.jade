@@ -3,12 +3,12 @@ doctype
 html(lang=app.lang)
   head
     meta(charset="utf-8")
-    title= app.title + " :: " + page.title
+    title= data.title + " :: " + page.title
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="description" content=app.seo.description)
-    meta(name="keywords" content=app.seo.keywords)
-    meta(name="author" content=app.seo.author)
-    meta(name="robots" content=app.seo.robots)
+    meta(name="description" content=data.seo.description)
+    meta(name="keywords" content=data.seo.keywords)
+    meta(name="author" content=data.seo.author)
+    meta(name="robots" content=data.seo.robots)
     // head codes goes here
     block head
   body
