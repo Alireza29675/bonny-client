@@ -4,15 +4,19 @@ var minifyHtml = require('gulp-minify-html');
 var prettify = require('gulp-html-prettify');
 var data = require('gulp-data');
 var fs = require('fs');
+var config = require('./bonny-config');
 
-var _appDataURL = './develop/bonny.config.json';
+var _appDataURL = './bonny.config.json';
 
 var handleError = function (err) {
   console.error( err.toString() );
 }
 
 var paths = {
-  templates: './develop/pages/*.jade',
+  templates: [
+    config.developSrc + '/pages/*.jade',
+    '!' + config.developSrc + '/pages/template.jade'
+  ],
 };
 
 gulp.task('templates', function() {
@@ -27,7 +31,7 @@ gulp.task('templates', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch([paths.templates, _appDataURL], ['templates']);
+  gulp.watch(paths.templates.concat([_appDataURL]), ['templates']);
 });
 
 gulp.task('default', ['watch', 'templates']);

@@ -5,7 +5,7 @@
 $ git clone https://github.com/Alireza29675/bonny-client.git
 $ cd bonny-client/
 $ npm install
-$ npm start
+$ webpack   &&   $ gulp
 ```
 
 _work in progress_

@@ -11,5 +11,14 @@
   },
   "data": {
 
+  },
+  "setting": {
+    "develop": {
+      "src": "./develop"
+    },
+    "build": {
+      "src": "./build",
+      "bundlesSrc": "/bundles"
+    }
   }
 }
