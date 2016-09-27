@@ -1,12 +1,12 @@
 var webpack = require('webpack');
-var config = require('./bonny-config');
+var config = require('./bonny.config').parse();
 
 module.exports = {
     watch: true,
     entry: config.bundles.webpackEntryObject,
     output: {
       path: __dirname,
-      filename: config.buildSrc + config.bundles.src + "/[name].bundle.js"
+      filename: config.bundles.fullBuildPath + "/[name].bundle.js"
     },
     module: {
         loaders: [

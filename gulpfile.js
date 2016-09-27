@@ -4,9 +4,9 @@ var minifyHtml = require('gulp-minify-html');
 var prettify = require('gulp-html-prettify');
 var data = require('gulp-data');
 var fs = require('fs');
-var config = require('./bonny-config');
+var config = require('./bonny.config').parse();
 
-var _appDataURL = './bonny.config.json';
+var _appDataURL = './bonny.config.js';
 
 var handleError = function (err) {
   console.error( err.toString() );
@@ -14,15 +14,15 @@ var handleError = function (err) {
 
 var paths = {
   templates: [
-    config.developSrc + '/pages/*.jade',
-    '!' + config.developSrc + '/pages/template.jade'
+    config.develop.src + '/pages/*.jade',
+    '!' + config.develop.src + '/pages/template.jade'
   ],
 };
 
 gulp.task('templates', function() {
   return gulp.src(paths.templates)
     .pipe(data(function(file) {
-      return JSON.parse(fs.readFileSync(_appDataURL));
+      return eval(String(fs.readFileSync(_appDataURL)));
     }))
     .pipe(jade())
     .on('error', handleError)
