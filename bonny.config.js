@@ -33,6 +33,8 @@ var data = {
 
 var setting = {
 
+  server: "laravel",
+
   develop: {
 
     src: "./develop",
@@ -47,11 +49,11 @@ var setting = {
 
   build: {
 
-    src: "./app",
+    src: "../bonny-laravel-server",
 
-    views: { src: "/" },
+    views: { src: "/resources/views/" },
 
-    bundles: { src: "/bundles" },
+    bundles: { src: "/public/bundles/" },
 
   }
 

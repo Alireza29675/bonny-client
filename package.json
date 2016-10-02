@@ -27,6 +27,7 @@
     "gulp-html-prettify": "0.0.1",
     "gulp-jade": "^1.1.0",
     "gulp-minify-html": "^1.0.6",
+    "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.0",
     "html-loader": "^0.4.4",
     "jade": "^1.11.0",
