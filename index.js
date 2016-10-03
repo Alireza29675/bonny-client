@@ -1,10 +1,6 @@
-const child_process = require('child_process');
 const fs = require('fs');
 const cli = require('bonny-cli-renderer');
 const config = require('./bonny.config').parse();
-
-const exec = child_process.exec;
-const spawn = child_process.spawn;
 
 class BonnyClient {
 
@@ -15,44 +11,30 @@ class BonnyClient {
   }
 
   webpack() {
-
-    const webpack = spawn('webpack');
-
     cli.log(`<message>Webpack creates ${config.bundles.items.length} bundles in '${config.bundles.fullBuildPath}'</message>`);
-
-/*
-    webpack.stdout.on('data', (data) => {
-      cli.log(`<message>WEBPACK: ${data}</message>`);
-    });
-*/
-
-    webpack.stderr.on('data', (data) => {
-      cli.log(`<error> WEBPACK: ${data} </error>`);
+    cli.runtimeExec({
+      command: 'webpack',
+      ondata: (data)=>{},
+      onerror: (error)=>{
+        cli.log(`<error> WEBPACK: ${data} </error>`);
+      }
     });
   }
 
   gulp() {
-
     const that = this;
-
-    const gulp = spawn('gulp');
-
     cli.log(`<message>Gulp creates several views in '${config.views.fullBuildPath}'</message>`);
-
-/*
-    gulp.stdout.on('data', (data) => {
-      cli.log(`<message>GULP: ${data}</message>`);
+    cli.runtimeExec({
+      command: 'webpack',
+      ondata: (data)=>{},
+      onerror: (error)=>{
+        cli.log(`<error> GULP: ${data} </error>`);
+        cli.log(`<message>gulp will restart 5seconds later automatically...</message>`);
+        setTimeout(()=>{
+          that.gulp();
+        }, 5000);
+      }
     });
-*/
-
-    gulp.stderr.on('data', (data) => {
-      cli.log(`<error> GULP: ${data} </error>`);
-      cli.log(`<message>gulp will restart 5seconds later automatically...</message>`);
-      setTimeout(()=>{
-        that.gulp();
-      }, 5000);
-    });
-
   }
 
 }
