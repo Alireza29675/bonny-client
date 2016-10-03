@@ -1,6 +1,6 @@
 # Bonny Client
 
-## Use beta:
+### Use beta:
 ```bash
 $ git clone https://github.com/Alireza29675/bonny-client.git
 $ cd bonny-client/
