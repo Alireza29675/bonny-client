@@ -4,7 +4,7 @@
   "description": "Bonny boilerplate client side",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --kill-others 'webpack' 'gulp'"
+    "start": "node index.js"
   },
   "keywords": [
     "boilerplate",
@@ -17,6 +17,7 @@
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
+    "bonny-cli-renderer": "^1.0.3",
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.11.0",
     "concurrently": "^3.0.0",
